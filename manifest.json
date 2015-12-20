@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "Transparent imperial to metric convertion",
+  "version": "0.1",
+  "description": "Automatically convert imperial units to metric units on all websites",
+  "content_scripts": 
+  [
+    {
+      "matches": ["*://*/*"],
+      "js": ["content_script.js"],
+      "run_at": "document_end"
+    }
+  ]
+}

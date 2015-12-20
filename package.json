@@ -1,0 +1,9 @@
+{
+  "name": "imperial-to-metric-units",
+  "version": "0.0.0",
+  "description": "Transparently convert imperial units to mentric units on websites",
+  "scripts": {
+    "test": "node --harmony tests/test.js"
+  },
+  "license": "MIT"
+}
