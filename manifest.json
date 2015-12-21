@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "Transparent imperial to metric convertion",
+  "name": "Automatic imperial to metric convertion BETA",
   "version": "0.1",
   "description": "Automatically convert imperial units to metric units on all websites",
   "icons": {
