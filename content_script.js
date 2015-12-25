@@ -6,7 +6,7 @@ const toConvert = [
   { regex: new RegExp('([0-9]+(\.[0-9]+)?) ?yards([.!?,; ]|$)', 'i'),         unit: 'm',  multiplier: 0.9144   },
   { regex: new RegExp('([0-9]+(\.[0-9]+)?) ?(pound|lb)s?([.!?,; ]|$)', 'i'), unit: 'kg', multiplier: 0.453592 },
   { regex: new RegExp('([0-9]+(\.[0-9]+)?) ?gallons?([.!?,; ]|$)', 'i'),      unit: 'l',  multiplier: 3.78541  },
-  { regex: new RegExp('([0-9]+(\.[0-9]+)?) ?st(ones?)?([.!?,; ]|$)', 'i'),    unit: 'kg', multiplier: 6.35029  },
+  { regex: new RegExp('([0-9]+(\.[0-9]+)?) ?stones?([.!?,; ]|$)', 'i'),    unit: 'kg', multiplier: 6.35029  },
   { regex: new RegExp('([0-9]+(\.[0-9]+)?) ?in(ch(es)?)?([.!?,; ]|$)', 'i'),  unit: 'cm', multiplier: 2.54     },
 ];
 
