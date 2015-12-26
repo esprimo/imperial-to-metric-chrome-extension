@@ -55,6 +55,15 @@ const testObjects = [
         ],
         expectedResult: '315',
       },
+      {
+        desc: 'Match correct if <number><space><number>',
+        testFunc: regexMatch,
+        funcArgs: [
+          'I do 5x4 310 lbs per day',
+          toConvert[3].regex,
+        ],
+        expectedResult: '310',
+      },
     ],
   },
   {
