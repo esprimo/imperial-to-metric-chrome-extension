@@ -46,6 +46,15 @@ const testObjects = [
         ],
         expectedResult: null,
       },
+      {
+        desc: 'Match with suffixed +',
+        testFunc: regexMatch,
+        funcArgs: [
+          'From 315lbs+ BF 49%',
+          toConvert[3].regex,
+        ],
+        expectedResult: '315',
+      },
     ],
   },
   {
