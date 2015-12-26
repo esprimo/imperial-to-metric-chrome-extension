@@ -123,7 +123,7 @@ function walk(node) {
 }
 
 // if module and module.exports is defined, we're running node, otherwise it's
-// in the browser. node is or testing
+// in the browser. node is for testing
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
     convertSimpleUnits,
