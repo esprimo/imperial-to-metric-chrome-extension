@@ -3,13 +3,13 @@
 const intOrFloat = '([0-9]+(\\.[0-9]+)?)';
 
 const toConvert = [
-  { regex: new RegExp(intOrFloat + ' ?mi(les?)?[^a-zA-Z]', 'i'),    unit: 'km', multiplier: 1.60934  },
-  { regex: new RegExp(intOrFloat + ' ?f(ee|oo)?t[^a-zA-Z]', 'i'),   unit: 'm',  multiplier: 0.3048   },
-  { regex: new RegExp(intOrFloat + ' ?yards[^a-zA-Z]', 'i'),        unit: 'm',  multiplier: 0.9144   },
-  { regex: new RegExp(intOrFloat + ' ?(pound|lb)s?[^a-zA-Z]', 'i'), unit: 'kg', multiplier: 0.453592 },
-  { regex: new RegExp(intOrFloat + ' ?gallons?[^a-zA-Z]', 'i'),     unit: 'l',  multiplier: 3.78541  },
-  { regex: new RegExp(intOrFloat + ' ?stones?[^a-zA-Z]', 'i'),      unit: 'kg', multiplier: 6.35029  },
-  { regex: new RegExp(intOrFloat + ' ?in(ch(es)?)?[^a-zA-Z]', 'i'), unit: 'cm', multiplier: 2.54     },
+  { regex: new RegExp(intOrFloat + ' ?mi(les?)?([^a-zA-Z]|$)', 'i'),    unit: 'km', multiplier: 1.60934  },
+  { regex: new RegExp(intOrFloat + ' ?f(ee|oo)?t([^a-zA-Z]|$)', 'i'),   unit: 'm',  multiplier: 0.3048   },
+  { regex: new RegExp(intOrFloat + ' ?yards([^a-zA-Z]|$)', 'i'),        unit: 'm',  multiplier: 0.9144   },
+  { regex: new RegExp(intOrFloat + ' ?(pound|lb)s?([^a-zA-Z]|$)', 'i'), unit: 'kg', multiplier: 0.453592 },
+  { regex: new RegExp(intOrFloat + ' ?gallons?([^a-zA-Z]|$)', 'i'),     unit: 'l',  multiplier: 3.78541  },
+  { regex: new RegExp(intOrFloat + ' ?stones?([^a-zA-Z]|$)', 'i'),      unit: 'kg', multiplier: 6.35029  },
+  { regex: new RegExp(intOrFloat + ' ?in(ch(es)?)?([^a-zA-Z]|$)', 'i'), unit: 'cm', multiplier: 2.54     },
 ];
 
 function appendAfter(text, appendAfterRegex, toAppend) {
