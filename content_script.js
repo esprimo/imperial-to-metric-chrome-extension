@@ -52,11 +52,15 @@ function convertSimpleUnits(text) {
 
   for (let i = 0; i < len; i++) {
     // Check it there is an imperial unit in 'text'
-    const matches = text.match(toConvert[i].regex);
+    // Use search first since it's faster. Even though we have to
+    // regex search twice it's worth it since we usually don't match
+    // and therefor want it to be fast when not matching.
+    if (text.search(toConvert[i].regex) !== -1) {
+      const matches = text.match(toConvert[i].regex);
 
-    // if an imperial unit is found, convert it and replace the original text
-    if (matches) {
-      text = convertText(text, matches, i);
+      if (matches) {
+        text = convertText(text, matches, i);
+      }
     }
   }
   return text;
