@@ -1,13 +1,13 @@
 'use strict';
 
 const toConvert = [
-  { regex: new RegExp('([0-9]+(\\.[0-9]+)?) ?mi(les?)?([\\^a-zA-Z]|$)', 'i'),    unit: 'km', multiplier: 1.60934  },
-  { regex: new RegExp('([0-9]+(\\.[0-9]+)?) ?f(ee|oo)?t([\\^a-zA-Z]|$)', 'i'),   unit: 'm',  multiplier: 0.3048   },
-  { regex: new RegExp('([0-9]+(\\.[0-9]+)?) ?yards([\\^a-zA-Z]|$)', 'i'),        unit: 'm',  multiplier: 0.9144   },
-  { regex: new RegExp('([0-9]+(\\.[0-9]+)?) ?(pound|lb)s?([\\^a-zA-Z]|$)', 'i'), unit: 'kg', multiplier: 0.453592 },
-  { regex: new RegExp('([0-9]+(\\.[0-9]+)?) ?gallons?([\\^a-zA-Z]|$)', 'i'),     unit: 'l',  multiplier: 3.78541  },
-  { regex: new RegExp('([0-9]+(\\.[0-9]+)?) ?stones?([\\^a-zA-Z]|$)', 'i'),      unit: 'kg', multiplier: 6.35029  },
-  { regex: new RegExp('([0-9]+(\\.[0-9]+)?) ?in(ch(es)?)?([\\^a-zA-Z]|$)', 'i'), unit: 'cm', multiplier: 2.54     },
+  { regex: new RegExp('([0-9]+(\\.[0-9]+)?) ?mi(les?)?[^a-zA-Z]', 'i'),    unit: 'km', multiplier: 1.60934  },
+  { regex: new RegExp('([0-9]+(\\.[0-9]+)?) ?f(ee|oo)?t[^a-zA-Z]', 'i'),   unit: 'm',  multiplier: 0.3048   },
+  { regex: new RegExp('([0-9]+(\\.[0-9]+)?) ?yards[^a-zA-Z]', 'i'),        unit: 'm',  multiplier: 0.9144   },
+  { regex: new RegExp('([0-9]+(\\.[0-9]+)?) ?(pound|lb)s?[^a-zA-Z]', 'i'), unit: 'kg', multiplier: 0.453592 },
+  { regex: new RegExp('([0-9]+(\\.[0-9]+)?) ?gallons?[^a-zA-Z]', 'i'),     unit: 'l',  multiplier: 3.78541  },
+  { regex: new RegExp('([0-9]+(\\.[0-9]+)?) ?stones?[^a-zA-Z]', 'i'),      unit: 'kg', multiplier: 6.35029  },
+  { regex: new RegExp('([0-9]+(\\.[0-9]+)?) ?in(ch(es)?)?[^a-zA-Z]', 'i'), unit: 'cm', multiplier: 2.54     },
 ];
 
 function appendAfter(text, appendAfterRegex, toAppend) {
