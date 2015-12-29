@@ -10,7 +10,7 @@ const toConvert = [
   { regex: new RegExp('(' + intOrFloat + ' ?(pound|lb)s?)' + unitSuffix, 'ig'), unit: 'kg', multiplier: 0.453592 },
   { regex: new RegExp('(' + intOrFloat + ' ?gallons?)' + unitSuffix, 'ig'),     unit: 'L',  multiplier: 3.78541  },
   { regex: new RegExp('(' + intOrFloat + ' ?stones?)' + unitSuffix, 'ig'),      unit: 'kg', multiplier: 6.35029  },
-  { regex: new RegExp('(' + intOrFloat + ' ?in(ch(es)?)?)' + unitSuffix, 'ig'), unit: 'cm', multiplier: 2.54     },
+  { regex: new RegExp('(' + intOrFloat + ' ?inch(es)?)' + unitSuffix, 'ig'), unit: 'cm', multiplier: 2.54     },
 ];
 
 function convert(originalAmount, multiplier) {
