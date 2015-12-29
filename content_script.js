@@ -78,7 +78,7 @@ function feetAndInchesToMeter(text) {
     meter = Math.round(meter * 100) / 100;
 
     // Append unit
-    meter = meter + 'm';
+    meter = meter + ' m';
 
     // Append the meter value after the original
     // 7'11" will for example become:  7'11 (2.41m)
