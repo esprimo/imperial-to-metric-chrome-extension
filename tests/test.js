@@ -67,6 +67,12 @@ const testObjects = [
         expectedResult: '310',
       },
       {
+        desc: 'Handle large numbers with , correctly',
+        testFunc: convertSimpleUnits,
+        funcArgs: 'The turtle weigh 1,000 lbs',
+        expectedResult: 'The turtle weigh 1,000 lbs (453.59 kg)',
+      },
+      {
         desc: 'Correct ouput for stone convertion',
         testFunc: convertSimpleUnits,
         funcArgs: 'I eat 10 lbs per day',

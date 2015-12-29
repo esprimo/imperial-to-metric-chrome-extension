@@ -22,7 +22,6 @@ See example below:
 * More test/better tests
 * Support for more units
 * Option to turn off extension
-* Support for numbers written like "1,000 lbs"
 * Support for ranges, eg. 50-80 pounds (would currently convert "80 pounds" only)
 
 

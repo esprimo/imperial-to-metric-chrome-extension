@@ -1,6 +1,6 @@
 'use strict';
 
-const intOrFloat = '([0-9]+(\\.[0-9]+)?)';
+const intOrFloat = '([0-9]+([,\\.][0-9]+)?)';
 const unitSuffix = '([^a-zA-Z]|$)';
 
 const toConvert = [
@@ -24,6 +24,9 @@ function convert(originalAmount, multiplier) {
 function convertForOutput(originalAmount, unitIndex) {
   const multiplier  = toConvert[unitIndex].multiplier;
   const unit        = toConvert[unitIndex].unit;
+
+  // remove , if any
+  originalAmount = originalAmount.replace(/,/g, '');
 
   // Acutal number convertion
   const convertedAmount = convert(originalAmount, multiplier);
