@@ -4,6 +4,7 @@ const snelTest = require('./snelTest.js');
 const convertStuff = require('../content_script.js');
 const feetAndInchesToMeter = convertStuff.feetAndInchesToMeter;
 const toConvert = convertStuff.toConvert;
+const convertSimpleUnits = convertStuff.convertSimpleUnits;
 
 function regexMatch(text, regex) {
   regex = new RegExp(regex);
@@ -64,6 +65,12 @@ const testObjects = [
           toConvert[3].regex,
         ],
         expectedResult: '310',
+      },
+      {
+        desc: 'Correct ouput for stone convertion',
+        testFunc: convertSimpleUnits,
+        funcArgs: 'I eat 10 lbs per day',
+        expectedResult: 'I eat 10 lbs (4.54 kg) per day',
       },
     ],
   },
