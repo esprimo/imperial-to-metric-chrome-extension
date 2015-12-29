@@ -5,9 +5,10 @@ const convertStuff = require('../content_script.js');
 const feetAndInchesToMeter = convertStuff.feetAndInchesToMeter;
 const toConvert = convertStuff.toConvert;
 
-function regexMatch(text, searchValue) {
-  const match = text.match(searchValue);
-  return (match) ? match[1] : null;
+function regexMatch(text, regex) {
+  regex = new RegExp(regex);
+  const match = regex.exec(text);
+  return (match) ? match[2] : null;
 }
 
 const testObjects = [
