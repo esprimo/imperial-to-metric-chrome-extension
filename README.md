@@ -23,5 +23,7 @@ See example below:
 * Support for more units
 * Option to turn off extension
 * Support for ranges, eg. 50-80 pounds (would currently convert "80 pounds" only)
+* Convert units textnodes added via javascript after initial load
+* Convert units when a textnode changes after the initial load
 
 
