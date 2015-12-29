@@ -4,21 +4,14 @@ const intOrFloat = '([0-9]+(\\.[0-9]+)?)';
 const unitSuffix = '([^a-zA-Z]|$)';
 
 const toConvert = [
-  { regex: new RegExp(intOrFloat + ' ?mi(les?)?' + unitSuffix, 'i'),    unit: 'km', multiplier: 1.60934  },
-  { regex: new RegExp(intOrFloat + ' ?f(ee|oo)?t' + unitSuffix, 'i'),   unit: 'm',  multiplier: 0.3048   },
-  { regex: new RegExp(intOrFloat + ' ?yards' + unitSuffix, 'i'),        unit: 'm',  multiplier: 0.9144   },
-  { regex: new RegExp(intOrFloat + ' ?(pound|lb)s?' + unitSuffix, 'i'), unit: 'kg', multiplier: 0.453592 },
-  { regex: new RegExp(intOrFloat + ' ?gallons?' + unitSuffix, 'i'),     unit: 'l',  multiplier: 3.78541  },
-  { regex: new RegExp(intOrFloat + ' ?stones?' + unitSuffix, 'i'),      unit: 'kg', multiplier: 6.35029  },
-  { regex: new RegExp(intOrFloat + ' ?in(ch(es)?)?' + unitSuffix, 'i'), unit: 'cm', multiplier: 2.54     },
+  { regex: new RegExp('(' + intOrFloat + ' ?mi(les?)?)' + unitSuffix, 'ig'),    unit: 'km', multiplier: 1.60934  },
+  { regex: new RegExp('(' + intOrFloat + ' ?f(ee|oo)?t)' + unitSuffix, 'ig'),   unit: 'm',  multiplier: 0.3048   },
+  { regex: new RegExp('(' + intOrFloat + ' ?yards)' + unitSuffix, 'ig'),        unit: 'm',  multiplier: 0.9144   },
+  { regex: new RegExp('(' + intOrFloat + ' ?(pound|lb)s?)' + unitSuffix, 'ig'), unit: 'kg', multiplier: 0.453592 },
+  { regex: new RegExp('(' + intOrFloat + ' ?gallons?)' + unitSuffix, 'ig'),     unit: 'L',  multiplier: 3.78541  },
+  { regex: new RegExp('(' + intOrFloat + ' ?stones?)' + unitSuffix, 'ig'),      unit: 'kg', multiplier: 6.35029  },
+  { regex: new RegExp('(' + intOrFloat + ' ?in(ch(es)?)?)' + unitSuffix, 'ig'), unit: 'cm', multiplier: 2.54     },
 ];
-
-function appendAfter(text, appendAfterRegex, toAppend) {
-  const regex = new RegExp('(' + appendAfterRegex + ')');
-  const updatedText = text.replace(regex, '$1 ' + toAppend);
-
-  return updatedText;
-}
 
 function convert(originalAmount, multiplier) {
   let convertedAmount = originalAmount * multiplier;
@@ -28,23 +21,21 @@ function convert(originalAmount, multiplier) {
   return convertedAmount;
 }
 
-function convertText(text, matches, unitIndex) {
-  // If 'text' would be for example "It's 12 feet away", 'fullTextMatch'
-  // would be "12 feet" and 'originalAmount would be "12".
-  const fullTextMatch   = matches[0];
-  const originalAmount  = matches[1];
-
+function convertForOutput(originalAmount, unitIndex) {
   const multiplier  = toConvert[unitIndex].multiplier;
   const unit        = toConvert[unitIndex].unit;
 
   // Acutal number convertion
   const convertedAmount = convert(originalAmount, multiplier);
-  // Format converted value for output (always add a space after)
-  const convertedString = `(${convertedAmount} ${unit}) `;
-  // Insert converted value after the original one
-  const convertedText = appendAfter(text, fullTextMatch, convertedString);
+  // Format converted value for output (always add a space before)
+  // Will be for example:  (13.37 m)
+  const convertedString = ` (${convertedAmount} ${unit})`;
 
-  return convertedText;
+  return convertedString;
+}
+
+function insertAt(target, toInsert, index) {
+  return target.substr(0, index) + toInsert + target.substr(index);
 }
 
 function convertSimpleUnits(text) {
@@ -56,10 +47,14 @@ function convertSimpleUnits(text) {
     // regex search twice it's worth it since we usually don't match
     // and therefor want it to be fast when not matching.
     if (text.search(toConvert[i].regex) !== -1) {
-      const matches = text.match(toConvert[i].regex);
+      let matches;
+      while ((matches = toConvert[i].regex.exec(text)) !== null) {
+        const fullMatch =  matches[1];
+        const originalAmount = matches[2];
 
-      if (matches) {
-        text = convertText(text, matches, i);
+        const convertedString = convertForOutput(originalAmount, i);
+        const insertIndex = matches.index + fullMatch.length;
+        text = insertAt(text, convertedString, insertIndex);
       }
     }
   }
