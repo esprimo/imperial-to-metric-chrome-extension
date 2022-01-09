@@ -1,3 +1,5 @@
+**DEPRECATED:** This project is not maintained. I suggest taking a look at [this](https://github.com/m1l/Everything-Metric-Firefox) project instead.
+
 # Chrome extension to automatically convert imperial units to metric
 
 This chrome extension will try to find imperial units on websites, and convert them to metric units, and insert the converted value directly on the site.
@@ -17,13 +19,3 @@ See example below:
 * Stones
 * Inches
 * Feet+inches (eg. 7'11")
-
-## Todo
-* More test/better tests
-* Support for more units
-* Option to turn off extension
-* Support for ranges, eg. 50-80 pounds (would currently convert "80 pounds" only)
-* Convert units textnodes added via javascript after initial load
-* Convert units when a textnode changes after the initial load
-
-
